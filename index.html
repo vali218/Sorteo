@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rifa</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<h1 contenteditable="true">SORTEO 2026</h1>
+<div class="sub">
+<h2 class="subtitulo2">Aca se van a encontrar todos los números disponibles y no disponibles</h2>
+
+
+<h2 class="subtitulo">Leer importante Información al final de la página antes de comprar.</h2>
+<h2 class="subtitulo2">Valor del número: $1000 ARS</h2>
+<h2 class="subtitulo2"><span style="color: red;">Rojo</span> = Vendido</h2></div>
+
+<div class="grid" id="grid"></div>
+
+<div class="admin">
+
+<h3>Lista de números vendidos (solo para editar)</h3>
+
+<textarea id="listaVendidos">
+
+</textarea>
+
+<button onclick="actualizar()">Actualizar</button>
+
+</div>
+
+<div class="info">
+<h2 contenteditable="true" style="text-align: center;">Información</h2>
+<p contenteditable="true"><strong style="color: rgb(255, 52, 52);">Como comprar un número:</strong> <ul>
+  <li>1.Ir a la cuenta de instagram @sorteobici2026</li>
+  <li>2.Manda un mensaje con tu nombre, un número de teléfono y números a comprar (del 000 al 999).</li>
+  <li>3.Aguarda a recibir la información de transferencia</li>
+  <li>4.Mandar comprobante de pago. En el caso de que se efectue o no la transferencia, se dara aviso.</li>
+</ul>
+</p>
+
+
+<p contenteditable="true"><strong style="color: rgb(255, 52, 52);">Cuando se sortea el premio:</strong> <ul>
+  <li>El premio se sorteara una vez queden vendidos todos los números. Puede hacerse una excepcion si ya pasaron mas de 3 meses y quedan pocos números por vender.</li>
+</ul>
+</p>
+
+<p contenteditable="true"><strong style="color: rgb(255, 52, 52);">Como se va a sortear el premio:</strong> <ul>
+  <li>El número ganador se determinará según los resultados de la Quiniela Nacional una vez vendidos los números.</li>
+</ul>
+</p>
+
+<p contenteditable="true"><strong style="color: rgb(255, 52, 52);">Ámbito Geográfico:</strong> <ul>
+  <li>Sorteo válido solo para la República Argentina</li>
+</ul>
+</p>
+
+<p contenteditable="true"><strong style="color: rgb(255, 52, 52);">Premio:</strong> <ul>
+  <li>En el caso de que el ganador viva dentro de la Provincia de Buenos Aires, podrá optar por ganar una Bicicleta Firebird R20 Plegable y la suma total de $100.000 ARS por transferencia. O podrá elegir la suma total de $250.000 ARS <strong>SIN</strong> la bicicleta.</li>
+  <li>En el caso de que el ganador <strong>NO</strong> viva dentro de la Provincia de Buenos Aires, <strong>SOLO</strong> recibira la suma total de $250.000 ARS por transferencia.</li>
+  
+</ul>
+</p>
+
+<p contenteditable="true"><strong style="color: rgb(255, 52, 52);">Entrega de premio:</strong> <ul>
+  <li>El premio será enviado al domicilio dentro del territorio indicado por el ganador, a cargo del organizador y dentro de los 30 días hábiles de haberse comunicado su condición de ganador y habiendo mandado la información que el organizador haya requerido. En el caso del que ganador no se encuentre dentor de la Provincia de Buenos Aires podrá optar por recibir solo la transferencia.</li>
+</ul>
+</p>
+
+<p contenteditable="true"><strong style="color: rgb(255, 52, 52);">Vacancia:</strong> <ul>
+  <li>En caso de que no se presente el ganador titular o suplente a retirar premio; o no se presenten la documentación que le figure requerida; o que por cualquier motivo no pudiere asignarse un/a ganador/a al vencimineto del plazo, el/la ganador/a perderá su derecho al premio, el que quedara vacante sin derecho a reclamo por parte del ganador. El premio se considerera de propiedad del <strong>organizador que podrá asignarlo a un nuevo sorteo</strong></li>
+</p>
+
+</div>
+
+<script>
+
+const grid = document.getElementById("grid")
+
+// crear grid
+for(let i=0;i<=999;i++){
+
+let num = i.toString().padStart(3,"0")
+
+let cell = document.createElement("div")
+cell.className="cell"
+cell.textContent=num
+
+grid.appendChild(cell)
+
+}
+
+// marcar vendidos
+function actualizar(){
+
+document.querySelectorAll(".cell").forEach(c=>{
+c.classList.remove("sold")
+})
+
+let lista = document.getElementById("listaVendidos").value.split("\n")
+
+lista.forEach(n=>{
+
+let num = n.trim()
+
+document.querySelectorAll(".cell").forEach(c=>{
+if(c.textContent === num){
+c.classList.add("sold")
+}
+})
+
+})
+
+}
+
+// cargar al iniciar
+actualizar()
+
+let clave = prompt("Contraseña")
+
+if(clave !== "0Mqwfvk'686$"){
+document.querySelector(".admin").style.display="none"
+}
+
+</script>
+
+</body>
+</html>
